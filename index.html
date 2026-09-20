@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jiyoung Baek — Computational Social Science &amp; Urban AI</title>
+<meta name="description" content="Jiyoung Baek, PhD Student at KAIST School of Digital Humanities and Computational Social Science. Research on urban inequality, urban AI, and regional development.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="network-canvas"></canvas>
+
+<div class="grain"></div>
+
+<header class="site-header">
+  <a href="#top" class="logo">JB</a>
+  <nav class="main-nav">
+    <a href="#research">Research</a>
+    <a href="#work">Publications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button id="theme-toggle" aria-label="Toggle color theme">
+    <span class="toggle-track"><span class="toggle-thumb"></span></span>
+  </button>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <p class="eyebrow reveal">PhD Student — KAIST</p>
+    <h1 class="hero-title">
+      <span class="reveal">Jiyoung</span>
+      <span class="reveal" style="--d:0.08s">Baek</span>
+    </h1>
+    <p class="hero-sub reveal" style="--d:0.16s">
+      Studying how data, algorithms, and cities shape one another —
+      computational social science at the intersection of
+      <em>urban inequality</em>, <em>urban&nbsp;AI</em>, and <em>regional development</em>.
+    </p>
+    <div class="hero-meta reveal" style="--d:0.24s">
+      <span>School of Digital Humanities &amp; Computational Social Science</span>
+      <span class="dot">·</span>
+      <span>KAIST</span>
+    </div>
+    <a href="#research" class="scroll-cue" aria-label="Scroll to research">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="section-head">
+      <span class="index mono">00</span>
+      <h2>About</h2>
+    </div>
+    <div class="about-grid">
+      <p class="lede reveal">
+        I'm a PhD student at KAIST, working at the intersection of
+        computational social science and urban studies. My research asks
+        how cities produce and reproduce inequality — and how emerging
+        AI systems, from mobility models to generative urban simulations,
+        are beginning to reshape that process.
+      </p>
+      <div class="about-details reveal">
+        <p>
+          I combine large-scale administrative and mobile data, spatial
+          statistics, and machine learning to study neighborhood change,
+          uneven regional growth, and the socio-technical systems now
+          embedded in urban governance. I'm broadly interested in building
+          methods that make cities more legible — and more accountable —
+          to the people who live in them.
+        </p>
+        <a class="text-link" href="mailto:jiyoung@kaist.ac.kr">Get in touch →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="section" id="research">
+    <div class="section-head">
+      <span class="index mono">01</span>
+      <h2>Research</h2>
+    </div>
+
+    <div class="research-grid">
+      <article class="research-card reveal">
+        <span class="mono card-num">01</span>
+        <h3>Computational Social Science</h3>
+        <p>Using large-scale behavioral, textual, and administrative
+          data with statistical and machine-learning methods to study
+          social structure at population scale.</p>
+      </article>
+
+      <article class="research-card reveal">
+        <span class="mono card-num">02</span>
+        <h3>Urban Inequality</h3>
+        <p>Measuring how residential segregation, mobility access, and
+          neighborhood opportunity are distributed — and how those
+          patterns persist or shift over time.</p>
+      </article>
+
+      <article class="research-card reveal">
+        <span class="mono card-num">03</span>
+        <h3>Urban AI</h3>
+        <p>Examining how AI systems — from predictive policing to
+          generative urban design tools — are embedded into planning
+          and governance, and with what consequences.</p>
+      </article>
+
+      <article class="research-card reveal">
+        <span class="mono card-num">04</span>
+        <h3>Regional Development</h3>
+        <p>Tracing uneven growth across regions and cities, and how
+          infrastructure, policy, and agglomeration shape long-run
+          spatial disparities.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK / PUBLICATIONS -->
+  <section class="section" id="work">
+    <div class="section-head">
+      <span class="index mono">02</span>
+      <h2>Publications &amp; Working Papers</h2>
+    </div>
+
+    <ul class="pub-list">
+      <li class="pub-item reveal">
+        <div class="pub-year mono">2026</div>
+        <div class="pub-body">
+          <p class="pub-title">Add your paper title here</p>
+          <p class="pub-venue">Author names · Venue / Journal, status</p>
+        </div>
+        <a class="pub-link" href="#">PDF ↗</a>
+      </li>
+      <li class="pub-item reveal">
+        <div class="pub-year mono">2025</div>
+        <div class="pub-body">
+          <p class="pub-title">Add another paper title here</p>
+          <p class="pub-venue">Author names · Venue / Journal, status</p>
+        </div>
+        <a class="pub-link" href="#">PDF ↗</a>
+      </li>
+      <li class="pub-item reveal">
+        <div class="pub-year mono">Working</div>
+        <div class="pub-body">
+          <p class="pub-title">Working paper title</p>
+          <p class="pub-venue">Short one-line description of the project</p>
+        </div>
+        <a class="pub-link" href="#">Draft ↗</a>
+      </li>
+    </ul>
+    <p class="pub-hint reveal">Replace the placeholders above in <code>index.html</code> — see <code>README.md</code>.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="section-head">
+      <span class="index mono">03</span>
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <a href="mailto:jiyoung@kaist.ac.kr" class="contact-email reveal">jiyoung@kaist.ac.kr</a>
+      <div class="social-links reveal">
+        <a href="#" class="social-placeholder" data-fill="Google Scholar">Google Scholar</a>
+        <a href="#" class="social-placeholder" data-fill="GitHub">GitHub</a>
+        <a href="#" class="social-placeholder" data-fill="X / Twitter">X / Twitter</a>
+        <a href="#" class="social-placeholder" data-fill="LinkedIn">LinkedIn</a>
+        <a href="#" class="social-placeholder" data-fill="CV">CV (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <span>© <span id="year"></span> Jiyoung Baek</span>
+  <span>KAIST · School of Digital Humanities &amp; Computational Social Science</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
