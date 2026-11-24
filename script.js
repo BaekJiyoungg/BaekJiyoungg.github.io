@@ -247,6 +247,29 @@
     if (i != null) el.textContent = pad(i + 1);
   });
 
+  // ===== Side contents panel =====
+  const snList = $("#sn-list");
+  const tocToggle = $("#toc-toggle");
+  const snButtons = pages.map((p, i) => {
+    const li = document.createElement("li");
+    if (/^Research ·/.test(p.dataset.section || "")) li.className = "sn-sub";
+    const b = document.createElement("button");
+    b.innerHTML = `<span class="sn-n">${pad(i + 1)}</span><span class="sn-t"></span>`;
+    b.querySelector(".sn-t").textContent = p.dataset.title;
+    b.addEventListener("click", () => { goToPage(i); setDrawer(false); });
+    li.append(b);
+    snList.append(li);
+    return b;
+  });
+  function setDrawer(open) {
+    root.classList.toggle("sn-open", open);
+    tocToggle.setAttribute("aria-expanded", String(open));
+  }
+  tocToggle.addEventListener("click", () => setDrawer(!root.classList.contains("sn-open")));
+  $("#sn-backdrop").addEventListener("click", () => setDrawer(false));
+  const updateRail = () => root.classList.toggle("has-rail", window.innerWidth >= 1100 && window.innerWidth / window.innerHeight >= 0.95);
+  updateRail();
+
   // ===== Book =====
   const book = $("#book");
   const stage = $("#stage");
@@ -379,6 +402,7 @@
       t.classList.toggle("active", s === cur);
     });
     const vis = visiblePages();
+    snButtons.forEach((b, i) => b.classList.toggle("active", vis.includes(i)));
     label.textContent = vis.length === 1 && (vis[0] === 0 || vis[0] === N - 1)
       ? pages[vis[0]].dataset.title
       : `${vis.map((i) => pad(i + 1)).join("–")} · ${vis.map((i) => pages[i].dataset.title).join(" / ")}`;
@@ -427,6 +451,7 @@
     switch (e.key) {
       case "ArrowRight": case "PageDown": next(); break;
       case "ArrowLeft": case "PageUp": prev(); break;
+      case "Escape": setDrawer(false); break;
       case "Home": setCur(0); break;
       case "End": setCur(maxCur()); break;
       case " ": if (e.target === document.body) { e.preventDefault(); (e.shiftKey ? prev : next)(); } break;
@@ -445,6 +470,7 @@
   window.addEventListener("resize", () => {
     clearTimeout(rt);
     rt = setTimeout(() => {
+      updateRail();
       const m = decideMode();
       if (m !== mode) build(m, visiblePages()[0]);
     }, 120);

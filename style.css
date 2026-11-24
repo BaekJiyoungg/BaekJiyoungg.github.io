@@ -100,6 +100,10 @@ button { font: inherit; color: inherit; }
 .issue .sep { color: var(--accent); margin: 0 6px; }
 .topbar-right { display: flex; align-items: center; gap: 20px; }
 .toc-link {
+  background: none;
+  border: none;
+  padding: 6px 0;
+  cursor: pointer;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -676,3 +680,76 @@ button { font: inherit; color: inherit; }
   aspect-ratio: 0.72;
   box-shadow: 0 24px 50px -24px var(--shadow);
 }
+
+/* ===== Side contents panel ===== */
+.sidenav { display: none; }
+.js .sidenav {
+  display: block;
+  position: fixed;
+  top: var(--bar-top);
+  bottom: var(--bar-bottom);
+  left: 0;
+  width: var(--rail, 220px);
+  z-index: 40;
+  padding: 24px 20px 24px clamp(16px, 3vw, 36px);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.sn-head {
+  margin: 0 0 14px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+.sn-list { list-style: none; margin: 0; padding: 0; }
+.sn-list button {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  align-items: baseline;
+  width: 100%;
+  padding: 6px 0 6px 8px;
+  border: none;
+  border-left: 2px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color 0.2s, border-color 0.2s, padding 0.2s;
+}
+.sn-list button:hover { color: var(--ink); padding-left: 12px; }
+.sn-n { font-family: var(--mono); font-size: 10px; color: var(--faint); }
+.sn-t { font-family: var(--serif); font-size: 15px; line-height: 1.2; letter-spacing: -0.01em; }
+.sn-sub .sn-t { font-family: var(--sans); font-size: 12.5px; }
+.sn-list button.active { color: var(--ink); border-left-color: var(--accent); }
+.sn-list button.active .sn-n { color: var(--accent); }
+
+/* Wide screens: panel always visible as a rail, book shifts right */
+.js.has-rail { --rail: 220px; }
+.has-rail .stage { left: var(--rail); right: calc(var(--rail) * 0.35); }
+.has-rail.spread {
+  --ph: min(calc(100svh - var(--bar-top) - var(--bar-bottom) - 40px), calc((100vw - var(--rail) * 1.35 - 64px) / 2 / 0.72));
+}
+.has-rail .toc-link { display: none; }
+
+/* Narrow screens: panel is a drawer opened from the top bar */
+.js:not(.has-rail) .sidenav {
+  top: 0;
+  bottom: 0;
+  width: min(300px, 82vw);
+  padding-top: calc(var(--bar-top) + 16px);
+  background: var(--paper);
+  box-shadow: 0 0 40px var(--shadow);
+  transform: translateX(-105%);
+  transition: transform 0.35s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.js.sn-open:not(.has-rail) .sidenav { transform: none; }
+.sn-backdrop { display: none; }
+.js.sn-open:not(.has-rail) .sn-backdrop {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  background: rgba(0, 0, 0, 0.35);
+}
+.js:not(.has-rail) .topbar { z-index: 45; }

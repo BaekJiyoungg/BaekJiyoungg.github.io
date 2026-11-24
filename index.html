@@ -31,10 +31,16 @@
   <a href="#p1" class="logo" data-goto="cover" aria-label="Back to cover">JB</a>
   <div class="issue mono">Issue No. 01 <span class="sep">/</span> <span data-season></span></div>
   <div class="topbar-right">
-    <a href="#p2" class="toc-link mono" data-goto="contents">Contents</a>
+    <button class="toc-link mono" id="toc-toggle" aria-controls="sidenav" aria-expanded="false">Contents</button>
     <button id="theme-toggle" aria-label="Toggle color theme"><span class="thumb"></span></button>
   </div>
 </header>
+
+<aside class="sidenav" id="sidenav" aria-label="Table of contents">
+  <p class="sn-head mono">Contents</p>
+  <ol class="sn-list" id="sn-list"></ol>
+</aside>
+<div class="sn-backdrop" id="sn-backdrop"></div>
 
 <main class="stage" id="stage">
   <div class="book" id="book"></div>
