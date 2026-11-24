@@ -241,10 +241,10 @@ button { font: inherit; color: inherit; }
   display: flex;
   flex-direction: column;
   padding: 6.5cqh 8.5cqw 5cqh;
-  font-size: min(3cqw, 17px);
+  font-size: calc(min(3cqw, 17px) * var(--fit, 1));
   overflow: hidden;
 }
-.single .pi { font-size: min(4cqw, 17px); }
+.single .pi { font-size: calc(min(4cqw, 17px) * var(--fit, 1)); }
 .single .pc { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
 .single .page--letter .pull { display: none; }
 
@@ -304,7 +304,7 @@ button { font: inherit; color: inherit; }
 }
 
 /* ===== Cover ===== */
-.page--cover .pi { padding: 0; }
+.page--cover .pi { padding: 5cqh 6cqw 4.5cqh; }
 .cover-art {
   position: absolute;
   inset: 26% 0 0 0;
@@ -318,7 +318,8 @@ button { font: inherit; color: inherit; }
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin: 5cqh 6cqw 0;
+  gap: 0.8em;
+  margin: 0;
   padding-bottom: 0.8em;
   border-bottom: 1px solid var(--ink);
   font-size: 0.62em;
@@ -327,7 +328,7 @@ button { font: inherit; color: inherit; }
 }
 .masthead {
   position: relative;
-  margin: 0 0 0 4.5cqw;
+  margin: 0 0 0 -1.5cqw;
   font-family: var(--serif);
   font-weight: 500;
   font-size: 39cqw;
@@ -337,7 +338,7 @@ button { font: inherit; color: inherit; }
 }
 .cover-tag {
   position: relative;
-  margin: 0.4em 6cqw 0;
+  margin: 0.4em 0 0;
   font-family: var(--serif);
   font-style: italic;
   font-size: 1.15em;
@@ -346,9 +347,9 @@ button { font: inherit; color: inherit; }
 .cover-tag span { color: var(--accent); font-style: normal; }
 
 .cover-lines {
-  position: absolute;
-  left: 6cqw;
-  bottom: 13cqh;
+  position: relative;
+  margin-top: auto;
+  padding-top: 1em;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -370,8 +371,8 @@ button { font: inherit; color: inherit; }
 .cl-dek { font-size: 0.78em; color: var(--muted); }
 
 .cover-foot {
-  position: absolute;
-  left: 6cqw; right: 6cqw; bottom: 4.5cqh;
+  position: relative;
+  margin-top: 1.4em;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -563,6 +564,7 @@ button { font: inherit; color: inherit; }
 /* ===== Back cover ===== */
 .page--back { background: #171613; color: #f2f0ea; }
 .page--back .pi { padding: 0; justify-content: center; align-items: center; text-align: center; }
+.page--back .cover-foot { position: absolute; left: 6cqw; right: 6cqw; bottom: 4.5cqh; margin: 0; }
 .monogram {
   font-family: var(--serif);
   font-size: 30cqw;
@@ -660,7 +662,7 @@ button { font: inherit; color: inherit; }
 .hint.hide { opacity: 0; }
 
 /* ===== Small screens ===== */
-.single .issue, .single .label { display: none; }
+.single .issue, .single .label, .js.single .hint { display: none; }
 @media (max-width: 520px) {
   .issue { display: none; }
   .scrubber { width: 56vw; }

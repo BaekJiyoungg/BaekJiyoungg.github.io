@@ -473,9 +473,27 @@
       updateRail();
       const m = decideMode();
       if (m !== mode) build(m, visiblePages()[0]);
+      fitPages();
     }, 120);
   });
 
+  // ===== Auto-fit: shrink a page's type until nothing overflows =====
+  function fitPages() {
+    pages.forEach((p) => {
+      const pi = $(".pi", p);
+      const box = $(".pc", p) || pi;
+      const over = () => box.scrollHeight > box.clientHeight + 1 || pi.scrollHeight > pi.clientHeight + 1;
+      let s = 1;
+      pi.style.setProperty("--fit", 1);
+      while (over() && s > 0.66) {
+        s -= 0.03;
+        pi.style.setProperty("--fit", s.toFixed(2));
+      }
+    });
+  }
+
   // ===== Go =====
   build(decideMode(), pageFromHash());
+  fitPages();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitPages);
 })();
